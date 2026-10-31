@@ -1,0 +1,7 @@
+# The versions GPU'cuk was built and tested with (Python 3.12).
+# Retraining reproduced the published model bit for bit with exactly these versions.
+torch==2.14.1
+pillow==13.0.0
+pyserial==3.5
+esptool==5.6.0
+platformio==6.2.0

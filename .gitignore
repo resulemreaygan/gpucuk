@@ -1,0 +1,22 @@
+# Python (.venv may be a directory or a symlink to a shared one)
+.venv
+__pycache__/
+*.pyc
+
+# PlatformIO
+firmware/.pio/
+firmware/.vscode/
+
+# Training checkpoints, serial logs, experiment results and screen previews
+runs/
+
+# Host builds
+tools/host/llm_host
+tools/preview/.build/
+
+# Device backups hold the vendor's firmware and this device's calibration: never commit them
+backup/
+*.bin
+
+# macOS
+.DS_Store

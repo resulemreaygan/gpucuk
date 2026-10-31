@@ -1,0 +1,29 @@
+# Lint and type-check settings for the Python tools in tools/ (GPU'cuk is not a Python package).
+#   ruff check tools
+#   mypy
+#   shellcheck tools/*.sh tools/*/*.sh
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "UP", "ANN", "D", "I", "N"]
+ignore = [
+  "N806",  # B, T for batch and time sizes, as in most PyTorch code
+  "N812",  # torch.nn.functional as F
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.mypy]
+files = ["tools"]
+mypy_path = "tools"
+strict = true
+untyped_calls_exclude = ["torch"]  # Tensor.backward() has no type hints
+warn_return_any = false  # calling an nn.Module returns Any
+
+[[tool.mypy.overrides]]
+module = ["serial", "serial.*"]  # pyserial ships without type hints
+ignore_missing_imports = true
